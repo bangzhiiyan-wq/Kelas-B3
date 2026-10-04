@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kelas B3 – Teknik Informatika</title>
+<style>
+:root{--bg:#f4f5fb;--card:#fff;--tx:#161a2e;--mu:#667;--ac:#5b5bf0;--ac2:#f05bb0;--bd:#e3e5f2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0f1c;--card:#161a2e;--tx:#eef0ff;--mu:#9aa0c0;--bd:#262b47}}
+:root[data-theme="dark"]{--bg:#0d0f1c;--card:#161a2e;--tx:#eef0ff;--mu:#9aa0c0;--bd:#262b47}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;display:flex;align-items:center;gap:6px;padding:10px 16px;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd);overflow-x:auto}
+nav b{margin-right:auto;font-weight:800;white-space:nowrap}
+nav a{color:var(--mu);text-decoration:none;font-size:14px;padding:6px 12px;border-radius:99px;white-space:nowrap}
+nav a:hover{background:var(--card);color:var(--ac)}
+.hero{position:relative;overflow:hidden;color:#fff;text-align:center;padding:90px 20px 100px;background:radial-gradient(circle at 15% 20%,#f05bb0 0,transparent 45%),radial-gradient(circle at 85% 80%,#27c3f0 0,transparent 45%),linear-gradient(135deg,#3a2fd6,#7b3bf0)}
+.hero span{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);padding:5px 14px;border-radius:99px;font-size:13px;letter-spacing:.04em}
+.hero h1{font-size:clamp(44px,12vw,96px);line-height:1;margin:18px 0 14px;font-weight:900;letter-spacing:-.03em}
+.hero p{max-width:520px;margin:0 auto 26px;opacity:.9}
+.btn{display:inline-block;background:#fff;color:#3a2fd6;font-weight:700;text-decoration:none;padding:12px 26px;border-radius:99px;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.stats{max-width:760px;margin:-40px auto 0;padding:0 16px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;position:relative}
+.stat{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;text-align:center;box-shadow:0 10px 30px rgba(40,30,120,.12)}
+.stat b{display:block;font-size:28px;color:var(--ac)}
+.stat small{color:var(--mu)}
+main{max-width:900px;margin:0 auto;padding:0 16px 40px}
+h2{font-size:28px;margin:64px 0 18px;font-weight:800;letter-spacing:-.02em}
+h2::after{content:"";display:block;width:44px;height:5px;border-radius:9px;margin-top:8px;background:linear-gradient(90deg,var(--ac),var(--ac2))}
+.sched{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.day{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:18px;border-top:5px solid var(--c);transition:transform .2s}
+.day:hover{transform:translateY(-4px)}
+.day.now{box-shadow:0 0 0 2px var(--c)}
+.day small{color:var(--c);font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:12px}
+.day h3{margin:4px 0 8px;font-size:18px}
+.day p{margin:0;color:var(--mu);font-size:14px}
+.tag{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:2px 8px;border-radius:99px;margin-left:6px;vertical-align:middle}
+.news{display:flex;gap:16px;background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;margin-bottom:12px}
+.date{flex:none;width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;text-align:center;font-weight:800;line-height:1.1;padding-top:9px}
+.date small{display:block;font-size:11px;font-weight:600;opacity:.9}
+.news h3{margin:0;font-size:17px}
+.news p{margin:3px 0 0;color:var(--mu);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.mem{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:18px 12px;text-align:center;transition:transform .2s}
+.mem:hover{transform:translateY(-4px)}
+.av{width:56px;height:56px;border-radius:50%;margin:0 auto 10px;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800}
+.mem h3{margin:0;font-size:14px}
+.mem p{margin:0;color:var(--mu);font-size:12px}
+.dg{margin-bottom:34px}
+.dh{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:12px;padding-left:12px;border-left:5px solid var(--c)}
+.dh h3{margin:0;font-size:22px}
+.dh>span{color:var(--mu);font-size:13px}
+.dg .tag{margin-left:10px}
+.contact{background:linear-gradient(135deg,#3a2fd6,#7b3bf0);color:#fff;border-radius:20px;padding:28px}
+.contact h3{margin:0 0 6px;font-size:20px}
+.contact p{margin:0;opacity:.9}
+footer{text-align:center;color:var(--mu);font-size:13px;padding:20px 20px 40px}
+@media(max-width:520px){.stat b{font-size:22px}}
+footer{...}
+.lnk{display:inline-block;margin-top:6px;color:var(--ac);font-size:14px;font-weight:600;text-decoration:none}
+.lnk:hover{text-decoration:underline}
+@media(max-width:520px){.stat b{font-size:22px}}
+</style>
+</style>
+</head>
+<body>
+<nav><b>🎓 Kelas B3</b><a href="#info">Info</a><a href="#jadwal">Jadwal</a><a  href="#pengurus">Pengurus</a><a href="#anggota">Anggota</a><a href="#kontak">Kontak</a></nav>
+
+<header class="hero">
+<span>Teknik Informatika · Angkatan 2025/2026</span>
+<h1>Kelas B3</h1>
+<p>Jadwal kuliah semester 3 (19 SKS) B3.</p>
+<a class="btn" href="#jadwal">Lihat Jadwal</a>
+</header>
+
+<div class="stats">
+<div class="stat"><b id="s1">0</b><small>Mahasiswa</small></div>
+<div class="stat"><b id="s2">0</b><small>Mata Kuliah</small></div>
+<div class="stat"><b id="s3">0</b><small>Pengumuman</small></div>
+</div>
+
+<main>
+<h2 id="info">Pengumuman</h2>
+<div id="info-list"></div>
+
+<h2 id="jadwal">Jadwal Kuliah</h2>
+<div id="sched"></div>
+
+<h2 id="pengurus">Struktur Pengurus</h2>
+<div class="grid" id="pgrid"></div>
+
+<h2 id="anggota">Anggota Kelas</h2>
+<div class="grid" id="grid"></div>
+
+<h2 id="kontak">Kontak</h2>
+<div class="contact"><h3>Ikuti Kami</h3><p>Instagram: @kelasb3 · Grup Telegram kelas · Papan pengumuman di depan ruang kelas</p></div>
+</main>
+<footer>© 2026 Kelas B3 · Dibuat oleh <b>King Pleceks</b></footer>
+
+<script>
+// ===== Edit data di bawah ini =====
+const jadwal=[
+// [hari, jam, mata kuliah, ruang, dosen, SKS]
+["Senin","06.50–07.40","Praktikum Algoritma Pemrograman","D402","Ir. Ismail Abdurrozzaq Zulkarnain, S.Kom, M.Kom",1],
+["Senin","07.40–09.20","Praktikum Pemrograman Web","D403","Ir. Mohammad Bhanu Setyawan, S.T., M.Kom",1],
+["Senin","12.30–15.30","Pemrograman Berorientasi Objek","D404","Dyah Mustikasari, S.T., M.Eng",3],
+["Senin","15.30–17.30","Matematika Diskret","D403","Sugianti, S.Si., M.Kom.",3],
+["Selasa","06.50–08.30","Jaringan Komputer","D410","Dr. Ir. Fauzan Masykur, S.T., M.Kom",3],
+["Selasa","09.20–11.00","Pemrograman Web","D404","Rifqi Rahmatika Az-Zahra, S.Kom., M.Kom.",2],
+["Selasa","15.30–17.10","Sistem Operasi","D404","Arin Yuli Astuti, S.Kom, M.Kom",3],
+["Rabu","06.50–08.30","Struktur Data","D402","Indah Puji Astuti, S.Kom, M.Kom",3]];
+const info=[
+["16","Nov","Jadwal UTS","UTS dimulai 16-20 November 2026. Sesuai jadwal kalender akademis."],
+["04","Okt","Dana Kelas","Total dana Kelas Rp.430.000."],
+["04","Okt","Tugas Matkul","Tugas Matkul selalu cek Bebas.umpo.ac.id","https://bebas.umpo.ac.id"]];
+// [jabatan, nama, ikon] — isi nama pengurus di sini
+const pengurus=[
+["Dosen Wali","Arin Yuli Astuti, S.Kom, M.Kom","🎓"],
+["Ketua Kelas","(Avero Brillian Arfanda)","👑"],
+["Wakil Ketua","(Muhammad Alif Januardy)","🤝"],
+["Sekretaris","(isi nama)","📝"],
+["Bendahara","(isi nama)","💰"]];
+// [nama, NIM]
+const anggota=[
+["David Firdaus Addellaray Ilhaq","25533956"],
+["Rizky Fendi Ahmad","25533978"],
+["Yusuf Kamil","25533979"],
+["Intan Umaya Riesti","25533983"],
+["Muhammad Alif Januardy","25533986"],
+["Ndaru Akbar Tri Atmaja","25533999"],
+["Hafidz Ahmad Muzakhi","25534009"],
+["Avero Brillian Arfanda","25534012"],
+["Dhimas Indra Maulana","25534024"],
+["Endita Wella Mufida Agustina","25534031"],
+["Exsjulian Vireira Pahlawan","25534035"],
+["Cahyaning Maharani Putri","25534036"],
+["Zaky Surya Ramadhani","25534044"],
+["Marcello Alfiano Darma Putra","25534045"],
+["Rizky Surya Dhani Atmaja","25534056"],
+["Waode Puput Melati","25534063"],
+["Nur Hayu","25534065"],
+["Naufal Hafidz Narenito","25534066"],
+["Farmiyanti","25534068"],
+["Aimar Yazied Raditama","25534069"],
+["Uswatun Khoyrianisa","25534071"],
+["Zian Hafidz Mumtazza","25534076"],
+["Hesti","25534077"],
+["Adrian Achmad Satria Sofyananta","25534078"],
+["Riri Anda Ririn Karim","25534049"],
+["Helmawati","25534067"]];
+// ==================================
+
+const e=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const col=["#5b5bf0","#f05bb0","#14b8a6","#f59e0b","#27a3f0","#8b5cf6","#ef4444","#22c55e"];
+const hari=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"][new Date().getDay()];
+const urut=["Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+document.getElementById("sched").innerHTML=urut.filter(d=>jadwal.some(r=>r[0]===d)).map((d,k)=>{
+const rows=jadwal.filter(r=>r[0]===d),sks=rows.reduce((a,r)=>a+r[5],0),c=col[k%8];
+return `<section class="dg" style="--c:${c}"><div class="dh"><h3>${d}${d===hari?'<span class="tag">Hari ini</span>':""}</h3><span>${rows.length} mata kuliah · ${sks} SKS</span></div><div class="sched">`+
+rows.map(r=>`<div class="day${d===hari?" now":""}"><small>🕘 ${e(r[1])}</small><h3>${e(r[2])}</h3><p>📍 Ruang ${e(r[3])} · ${r[5]} SKS<br>👤 ${e(r[4])}</p></div>`).join("")+`</div></section>`;}).join("");
+document.getElementById("info-list").innerHTML=info.map(i=>
+`<div class="news"><div class="date">${e(i[0])}<small>${e(i[1])}</small></div><div><h3>${e(i[2])}</h3><p>${e(i[3])}</p>${i[4]?`<a class="lnk" href="${e(i[4])}" target="_blank" rel="noopener">Buka tautan →</a>`:""}</div></div>`).join("");
+document.getElementById("pgrid").innerHTML=pengurus.map((r,i)=>
+`<div class="mem"><div class="av" style="--c:${col[i%8]}">${r[2]}</div><h3>${e(r[1])}</h3><p>${e(r[0])}</p></div>`).join("");
+document.getElementById("grid").innerHTML=anggota.map((n,i)=>
+`<div class="mem"><div class="av" style="--c:${col[i%8]}">${e(n[0][0])}</div><h3>${e(n[0])}</h3><p>${e(n[1])}</p></div>`).join("");
+document.getElementById("s1").textContent=anggota.length;
+document.getElementById("s2").textContent=jadwal.length;
+document.getElementById("s3").textContent=info.length;
+</script>
+</body>
+</html>
