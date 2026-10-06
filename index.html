@@ -56,11 +56,12 @@ h2::after{content:"";display:block;width:44px;height:5px;border-radius:9px;margi
 .contact p{margin:0;opacity:.9}
 footer{text-align:center;color:var(--mu);font-size:13px;padding:20px 20px 40px}
 @media(max-width:520px){.stat b{font-size:22px}}
-footer{...}
+
 .lnk{display:inline-block;margin-top:6px;color:var(--ac);font-size:14px;font-weight:600;text-decoration:none}
 .lnk:hover{text-decoration:underline}
-@media(max-width:520px){.stat b{font-size:22px}}
-</style>
+.dl{display:flex;flex-wrap:wrap;gap:10px;margin:-4px 0 22px}
+.dl button{font:inherit;font-size:14px;font-weight:600;cursor:pointer;color:var(--ac);background:var(--card);border:1px solid var(--bd);border-radius:99px;padding:8px 16px}
+.dl button:hover{border-color:var(--ac)}
 </style>
 </head>
 <body>
@@ -84,7 +85,11 @@ footer{...}
 <div id="info-list"></div>
 
 <h2 id="jadwal">Jadwal Kuliah</h2>
+<div class="dl"><button onclick="unduhGambar()">🖼 Unduh Gambar</button></div>
+<div id="foto-jadwal" style="padding:16px">
+<p id="ft" style="display:none;margin:0 0 14px;font-size:20px;font-weight:800">Jadwal Kuliah Kelas B3 · Semester 3</p>
 <div id="sched"></div>
+</div>
 
 <h2 id="pengurus">Struktur Pengurus</h2>
 <div class="grid" id="pgrid"></div>
@@ -95,6 +100,7 @@ footer{...}
 <h2 id="kontak">Kontak</h2>
 <div class="contact"><h3>Ikuti Kami</h3><p>Instagram: @kelasb3 · Grup Telegram kelas · Papan pengumuman di depan ruang kelas</p></div>
 </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <footer>© 2026 Kelas B3 · Dibuat oleh <b>King Pleceks</b></footer>
 
 <script>
@@ -167,6 +173,29 @@ document.getElementById("grid").innerHTML=anggota.map((n,i)=>
 document.getElementById("s1").textContent=anggota.length;
 document.getElementById("s2").textContent=jadwal.length;
 document.getElementById("s3").textContent=info.length;
+function unduhCSV(){
+const q=v=>'"'+String(v).replace(/"/g,'""')+'"';
+const rows=[["Hari","Jam","Mata Kuliah","Ruang","Dosen","SKS"]].concat(jadwal);
+const csv="\uFEFF"+rows.map(r=>r.map(q).join(";")).join("\r\n");
+const a=document.createElement("a");
+a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));
+a.download="jadwal-kelas-b3.csv";
+document.body.appendChild(a);a.click();a.remove();
+setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function unduhGambar(){
+const el=document.getElementById("foto-jadwal");
+html2canvas(el,{
+scale:2,
+backgroundColor:getComputedStyle(document.body).backgroundColor,
+onclone:d=>{d.getElementById("ft").style.display="block"}
+}).then(c=>{
+const a=document.createElement("a");
+a.href=c.toDataURL("image/png");
+a.download="jadwal-kelas-b3.png";
+a.click();
+});
+}
 </script>
 </body>
 </html>
